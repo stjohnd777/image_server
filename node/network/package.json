@@ -1,0 +1,22 @@
+{
+  "name": "netcom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eigen": "^0.2.1",
+    "gps-time": "^1.0.9",
+    "jimp": "^0.22.7"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
