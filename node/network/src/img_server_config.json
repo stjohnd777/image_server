@@ -1,0 +1,8 @@
+{
+  "server_ip" : "127.0.0.1",
+  "server_port" : "7767",
+  "server_img_dir" : "C:/Users/e438262/WebstormProjects/network/data/star-data/wFOV",
+  "client_img_out_dir" : "C:/Users/e438262/WebstormProjects/network/out",
+  "image_type" : "png",
+  "client_poll_rate" : 1000
+}

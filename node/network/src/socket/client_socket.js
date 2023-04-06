@@ -1,12 +1,12 @@
-import net from 'net'
-import fs from 'fs'
+const net = require('net')
+const fs = require( 'fs')
 
 
-const root = 'C:/Users/e438262/WebstormProjects/network'
-const base_dir = `${root}/out`
-const img_type = "png"
 
-export async function requestImage(ip, port, cameraId = 0, uuid, callback = undefined) {
+let base_dir = 'C:/Users/e438262/WebstormProjects/network/out'
+let img_type = "png"
+
+async function requestImage(ip, port, cameraId = 0, uuid, callback = undefined) {
     const socket = net.Socket();
     socket.connect(port, ip);
     let request = `${uuid}|${cameraId}`
@@ -38,15 +38,19 @@ export async function requestImage(ip, port, cameraId = 0, uuid, callback = unde
 }
 
 let isRunning = true
-export async function startImageSocketClient(ip, port, cameraId = 0, uuid = Date.now()) {
-    while (isRunning) {
-        const data = await requestImage(ip, port, `${uuid}|${cameraId}`)
-        console.log(data)
-    }
+async function StartImageSocketClient(ip, port, cameraId = 0, delay = 1000) {
+    setInterval (async ()=>{
+        let uuid = Date.now()
+        const pathToImgFile = await requestImage(ip, port, `${uuid}|${cameraId}`)
+        console.log(`path to retrieved image: ${pathToImgFile} : delay ${delay}`)
+    }, delay)
 
 }
 
-requestImage("127.0.0.1", 7767, '0', '1356757191530').then(r => console.log('then'))
+module.exports = {
+    requestImage : requestImage,
+    StartImageSocketClient : StartImageSocketClient
+}
 
-
+// requestImage("127.0.0.1", 7767, '0', '1356757191530').then(r => console.log('then'))
 //startCameraServer("127.0.0.1", 7767, 0).then(r => console.log('then'))

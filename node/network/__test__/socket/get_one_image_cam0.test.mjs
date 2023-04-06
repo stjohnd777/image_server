@@ -1,5 +1,5 @@
-import {requestImage} from '../src/socket/client_socket.mjs'
-import {startImageSockeServer} from "../src/socket/server_socket.mjs";
+import {requestImage} from '../../src/socket/client_socket.js'
+import {startImageSockeServer} from "../../src/socket/server_socket.js";
 
 let host = "127.0.0.1"
 let port = 7767
