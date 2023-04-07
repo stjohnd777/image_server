@@ -1,9 +1,10 @@
 const net = require('net')
 const fs = require( 'fs')
+const config = require('../img_client_config.json')
 
 
 
-let base_dir = 'C:/Users/e438262/WebstormProjects/network/out'
+let save_dir = config.client_img_out_dir
 let img_type = "png"
 
 async function requestImage(ip, port, cameraId = 0, uuid, callback = undefined) {
@@ -24,10 +25,17 @@ async function requestImage(ip, port, cameraId = 0, uuid, callback = undefined) 
         return new Promise((resolve, reject) => {
             try {
                 socket.on('data', (buffer) => {
-                    const pathToImgFile = `${base_dir}/cam${cameraId}/${uuid}.${img_type}`
+                    const pathToImgFile = `${save_dir}/cam${cameraId}/${uuid}.${img_type}`
+                    console.log(`write=> ${pathToImgFile}`);
                     fs.writeFile(pathToImgFile, buffer, err => {
-                        console.log(`${buffer.len} bytes written to ${pathToImgFile}`);
-                        resolve(pathToImgFile)
+                        if ( !err) {
+                            console.log(`${buffer}  written to ${pathToImgFile}`);
+                            resolve(pathToImgFile)
+                        } else {
+                            console.log(err)
+                            reject(err)
+                        }
+
                     });
                 });
             } catch (e) {
