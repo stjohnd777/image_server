@@ -9,22 +9,6 @@
 using namespace std;
 using namespace cv;
 
-//int countCameras()
-//{
-//    cv::VideoCapture temp_camera;
-//    int maxTested = 10;
-//    for (int i = 0; i < maxTested; i++) {
-//        cv::VideoCapture temp_camera(i);
-//        bool res = (!temp_camera.isOpened());
-//        temp_camera.release();
-//        if (res)
-//        {
-//            return i;
-//        }
-//    }
-//    return maxTested;
-//}
-
 int StartTcpImageServer( std::string ip = "127.0.0.1", unsigned short port = 7767, int cameraId = 0) {
 
     bool isRunning = true;

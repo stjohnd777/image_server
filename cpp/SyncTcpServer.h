@@ -47,7 +47,7 @@ class SyncTcpServer {
 public:
     asio::io_service m_ios;
     asio::ip::tcp::acceptor m_Acceptor;
-    // asio::ip::tcp::socket sock;
+    //asio::ip::tcp::socket sock;
 
     SyncTcpServer(unsigned short port)
             : m_port(port), m_stop(false),

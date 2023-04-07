@@ -12,7 +12,7 @@ int main()
 
         // Create a TCP socket and connect to the server on port 8080
         tcp::socket socket(io_context);
-        socket.connect(tcp::endpoint(boost::asio::ip::address::from_string("127.0.0.1"), 8080));
+        socket.connect(tcp::endpoint(boost::asio::ip::address::from_string("192.168.1.12"), 8080));
 
         // Send the request for the image file "image.jpg"
         std::string request = "/Users/overman/dev/github/_mycode/_cpp/image_server/data/ori.jpg\n";
