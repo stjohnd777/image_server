@@ -1,5 +1,5 @@
 {
   "server_port" : "7767",
-  "server_img_dir" : "/Users/overman/dev/github/_mycode/_cpp/image_server/node/network/data/star-data/wFOV",
+  "server_img_dir" : "/Users/overman/dev/github/_mycode/_cpp/image_server/data/star-data/wFOV",
   "image_type" : "png",
 }
