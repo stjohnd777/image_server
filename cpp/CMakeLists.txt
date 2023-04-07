@@ -28,3 +28,18 @@ target_link_libraries(
         ${Boost_LIBRARIES}
 )
 
+
+add_executable(gptclient gptchat/gptclient.cpp)
+target_link_libraries(
+        gptclient
+        ${OpenCV_LIBS}
+        ${Boost_LIBRARIES}
+)
+
+add_executable(gptserver gptchat/gptserver.cpp)
+target_link_libraries(
+        gptserver
+        ${OpenCV_LIBS}
+        ${Boost_LIBRARIES}
+)
+
