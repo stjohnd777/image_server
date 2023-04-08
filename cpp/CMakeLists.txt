@@ -13,32 +13,16 @@ if(OpenCV_FOUND)
 endif()
 
 
-add_executable(image_server Common.h SyncTcpServer.h TcpImageServer.cpp)
-target_link_libraries(
-        image_server
-        ${OpenCV_LIBS}
-        ${Boost_LIBRARIES}
-)
-
-
-add_executable(image_client Common.h SyncTcpClient.h TcpImageClient.cpp)
-target_link_libraries(
-        image_client
-        ${OpenCV_LIBS}
-        ${Boost_LIBRARIES}
-)
-
-
-add_executable(imgclient simplest/imgclient.cpp)
+add_executable(imgclient ImgClient.cpp)
 target_link_libraries(
         imgclient
         ${OpenCV_LIBS}
         ${Boost_LIBRARIES}
 )
 
-add_executable(imgserver simplest/imgserver.cpp)
+add_executable(imgserver ImgServer.cpp)
 target_link_libraries(
-        gptserver
+        imgserver
         ${OpenCV_LIBS}
         ${Boost_LIBRARIES}
 )
