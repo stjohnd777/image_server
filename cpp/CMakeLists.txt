@@ -29,14 +29,14 @@ target_link_libraries(
 )
 
 
-add_executable(gptclient gptchat/gptclient.cpp)
+add_executable(imgclient simplest/imgclient.cpp)
 target_link_libraries(
-        gptclient
+        imgclient
         ${OpenCV_LIBS}
         ${Boost_LIBRARIES}
 )
 
-add_executable(gptserver gptchat/gptserver.cpp)
+add_executable(imgserver simplest/imgserver.cpp)
 target_link_libraries(
         gptserver
         ${OpenCV_LIBS}

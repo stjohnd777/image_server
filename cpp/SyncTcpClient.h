@@ -19,7 +19,8 @@ using boost::asio::ip::tcp;
 
 class SyncTcpClient {
 public:
-    SyncTcpClient(const std::string &host, unsigned short port) : m_sock(m_ios) {
+    SyncTcpClient(const std::string &host, unsigned short port) :
+    m_sock(m_ios) {
         m_sock.connect(tcp::endpoint(boost::asio::ip::address::from_string(host), port));
     }
 
@@ -44,6 +45,14 @@ private:
         boost::system::error_code error;
         boost::asio::streambuf receive_buffer;
 
+//        boost::asio::streambuf response_buf;
+//        boost::asio::read(socket, response_buf, boost::asio::transfer_exactly(WIDTH * HEIGHT * DEPTH) );
+//        std::vector<char> image_data = std::vector<char>(buffers_begin(response_buf.data()), buffers_end(response_buf.data()));
+//        char * a = = &response_buf[0];
+//        char *dst = new char[WIDTH * HEIGHT * DEPTH];
+//        memcpy(dst , a, WIDTH * HEIGHT * DEPTH);
+//        return make_tuple(WIDTH * HEIGHT * DEPTH, dst);
+
         char *dst = new char[WIDTH * HEIGHT * DEPTH];
         memset(dst, 0, WIDTH * HEIGHT * DEPTH);
         size_t total = 0;
@@ -65,12 +74,9 @@ private:
     }
 
     void close() {
-//        m_sock.shutdown(boost::asio::ip::tcp::socket::shutdown_both);
-//        m_sock.close();
     }
 
 private:
     asio::io_service m_ios;
-    //asio::ip::tcp::endpoint m_ep;
     asio::ip::tcp::socket m_sock;
 };
