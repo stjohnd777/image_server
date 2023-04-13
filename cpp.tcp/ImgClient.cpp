@@ -13,9 +13,10 @@ using namespace cv;
 using boost::asio::ip::tcp;
 
 
+bool isRunning = true;
 bool CheckShutdown() {
     // TODO: poll file system for stop file
-    return false;
+    return !isRunning;
 }
 
 
@@ -26,8 +27,6 @@ int main() {
 #define DEPTH  1
     std::string download_dir = "/Users/overman/dev/github/_mycode/_cpp/image_server/data/out";
     int cameraId = 0;
-    int height = 720;
-    int width = 1280;
     string ipServer = "127.0.0.1";
     int port = 8080;
     size_t READ_EXACTLY = HEIGHT * WIDTH * DEPTH;
@@ -63,7 +62,7 @@ int main() {
             }
 
             // Convert bytes to cv::Mat
-            cv::Mat img(height, width, cv::IMREAD_GRAYSCALE);
+            cv::Mat img(HEIGHT, WIDTH, cv::IMREAD_GRAYSCALE);
             memcpy(img.data, &image_data[0], image_data.size());
             imshow("image", img);
             cv::waitKey(0);
