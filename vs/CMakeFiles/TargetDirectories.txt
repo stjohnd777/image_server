@@ -1,4 +1,0 @@
-C:/Users/e438262/dev/sandbox/image_service/vs/CMakeFiles/image_server.dir
-C:/Users/e438262/dev/sandbox/image_service/vs/CMakeFiles/image_client.dir
-C:/Users/e438262/dev/sandbox/image_service/vs/CMakeFiles/ALL_BUILD.dir
-C:/Users/e438262/dev/sandbox/image_service/vs/CMakeFiles/ZERO_CHECK.dir
