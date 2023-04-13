@@ -80,7 +80,7 @@ map<thread::id,bool> mapImageServers;
 bool CheckShutdown(std::thread::id id) {
     // TODO: poll file system for stop file
     std::lock_guard<std::mutex> guard(g_mutexImageServers);
-    return mapImageServers[id];
+    return !mapImageServers[id];
 }
 
 
@@ -93,10 +93,6 @@ thread *startImageServer(int cameraId = 0, int port = 8080) {
 
             VideoCapture *pVideoCapture = new VideoCapture(cameraId);
             if (!pVideoCapture->isOpened()) {
-                mapImageServers[this_thread::get_id()] = false;
-            }
-            if (!pVideoCapture->isOpened()) {
-                delete pVideoCapture;
                 mapImageServers[this_thread::get_id()] = false;
             }
 
